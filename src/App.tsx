@@ -5,7 +5,7 @@ import SignInForm from "./_auth/forms/SignInForm";
 import SignUpForm from "./_auth/forms/SignUpForm";
 import AuthLayout from "./_auth/AuthLayout";
 import RootLayout from "./_root/RootLayout";
-import { Home } from "./_root/pages";
+import { CreatePost, Home } from "./_root/pages";
 import { Toaster } from "@/components/ui/toaster";
 
 const App = () => {
@@ -20,6 +20,7 @@ const App = () => {
         {/* private routes */}
         <Route element={<RootLayout />}>
           <Route index element={<Home />} />
+          <Route path='/create-post' element={<CreatePost />} />
         </Route>
       </Routes>
       <Toaster />
