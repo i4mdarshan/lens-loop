@@ -46,6 +46,7 @@ const LeftSideBar = () => {
             const isActive = pathname === link.route;
             return (
               <li
+                key={link.label}
                 className={`leftsidebar-link group ${
                   isActive && "bg-primary-500"
                 }`}
@@ -75,7 +76,7 @@ const LeftSideBar = () => {
         onClick={() => signOut()}
       >
         <img src='/assets/icons/logout.svg' alt='logout' />
-        <p className="small-medium lg:base-medium">Sign Out</p>
+        <p className='small-medium lg:base-medium'>Sign Out</p>
       </Button>
     </nav>
   );

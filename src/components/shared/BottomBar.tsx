@@ -10,7 +10,6 @@ const BottomBar = () => {
       {bottombarLinks.map((link) => {
         const isActive = pathname === link.route;
         return (
-          <>
             <Link
               to={link.route}
               key={link.label}
@@ -27,7 +26,6 @@ const BottomBar = () => {
               />
               <p className='tiny-medium text-light-2'>{link.label}</p>
             </Link>
-          </>
         );
       })}
     </section>
