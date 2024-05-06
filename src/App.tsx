@@ -8,6 +8,7 @@ import RootLayout from "./_root/RootLayout";
 import { CreatePost, EditPost, Home, PostDetails } from "./_root/pages";
 import { Toaster } from "@/components/ui/toaster";
 import Explore from "./_root/pages/Explore";
+import Profile from "./_root/pages/Profile";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
           <Route path='/create-post' element={<CreatePost />} />
           <Route path='/edit-post/:id' element={<EditPost />} />
           <Route path='/post/:id' element={<PostDetails />} />
+          <Route path='/profile/:id/*' element={<Profile />} />
         </Route>
       </Routes>
       <Toaster />
