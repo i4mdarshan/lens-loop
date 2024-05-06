@@ -26,9 +26,15 @@ function checkFileType(file: File) {
 }
 export const CreatePostValidation = z.object({
   caption: z.string().max(2200),
-  file: z
-    .custom<File[]>()
-    .refine((file: File[]) => file?.length !== 0, "File is required"),
+  file: z.custom<File[]>(),
+  // .refine((file: File[]) => file?.length !== 0, "File is required"),
+  location: z.string().max(100),
+  tags: z.string(),
+});
+
+export const UpdatePostValidation = z.object({
+  caption: z.string().max(2200),
+  file: z.custom<File[]>().optional(),
   location: z.string().max(100),
   tags: z.string(),
 });

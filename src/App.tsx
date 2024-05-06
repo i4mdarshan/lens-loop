@@ -5,7 +5,7 @@ import SignInForm from "./_auth/forms/SignInForm";
 import SignUpForm from "./_auth/forms/SignUpForm";
 import AuthLayout from "./_auth/AuthLayout";
 import RootLayout from "./_root/RootLayout";
-import { CreatePost, Home } from "./_root/pages";
+import { CreatePost, EditPost, Home } from "./_root/pages";
 import { Toaster } from "@/components/ui/toaster";
 
 const App = () => {
@@ -21,6 +21,7 @@ const App = () => {
         <Route element={<RootLayout />}>
           <Route index element={<Home />} />
           <Route path='/create-post' element={<CreatePost />} />
+          <Route path='/edit-post/:id' element={<EditPost />} />
         </Route>
       </Routes>
       <Toaster />

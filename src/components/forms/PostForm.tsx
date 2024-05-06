@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -19,16 +18,23 @@ import { Models } from "appwrite";
 import { useUserContext } from "@/context/AuthContext";
 import { useToast } from "../ui/use-toast";
 import { useNavigate } from "react-router-dom";
-import { useCreatePost } from "@/lib/react-query/queriesAndMutations";
+import {
+  useCreatePost,
+  useUpdatePost,
+} from "@/lib/react-query/queriesAndMutations";
 import Loader from "../shared/Loader";
+import { toPascalCase } from "@/lib/utils";
 
-type CreatePostFormProps = {
+type PostFormProps = {
   post?: Models.Document;
+  action: "create" | "update";
 };
 
-const CreatePostForm = ({ post }: CreatePostFormProps) => {
+const PostForm = ({ action, post }: PostFormProps) => {
   const { mutateAsync: createPost, isPending: isLoadingCreate } =
     useCreatePost();
+  const { mutateAsync: updatePost, isPending: isLoadingUpdate } =
+    useUpdatePost();
 
   const { user } = useUserContext();
   const { toast } = useToast();
@@ -47,6 +53,26 @@ const CreatePostForm = ({ post }: CreatePostFormProps) => {
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof CreatePostValidation>) {
+    if (post && action === "update") {
+      console.log(values);
+
+      const updatedPost = await updatePost({
+        ...values,
+        postId: post.$id,
+        imageId: post?.imageId,
+        imageURL: post?.imageURL,
+      });
+
+      if (!updatedPost) {
+        toast({
+          variant: "destructive",
+          title: "Something went wrong. Please try again!",
+        });
+      }
+
+      return navigate("/");
+    }
+
     const newPost = await createPost({
       ...values,
       userId: user.id,
@@ -144,21 +170,24 @@ const CreatePostForm = ({ post }: CreatePostFormProps) => {
             )}
           />
           <div className='flex gap-4 items-center justify-end'>
-            {!isLoadingCreate && (
+            {!isLoadingCreate || !isLoadingUpdate ? (
               <Button type='button' className='shad-button_dark_4'>
                 Cancel
               </Button>
+            ) : (
+              ""
             )}
             <Button
               type='submit'
               className='shad-button_primary whitespace-nowrap'
+              disabled={isLoadingCreate || isLoadingUpdate}
             >
-              {isLoadingCreate ? (
+              {isLoadingCreate || isLoadingUpdate ? (
                 <div className='flex-center gap-2'>
                   <Loader /> Uploading...
                 </div>
               ) : (
-                "Upload"
+                toPascalCase(action)
               )}
             </Button>
           </div>
@@ -168,4 +197,4 @@ const CreatePostForm = ({ post }: CreatePostFormProps) => {
   );
 };
 
-export default CreatePostForm;
+export default PostForm;

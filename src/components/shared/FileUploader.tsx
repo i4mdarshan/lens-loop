@@ -9,7 +9,7 @@ type FileUploaderProps = {
 
 const FileUploader = ({ fieldChange, mediaURL }: FileUploaderProps) => {
   const [file, setFile] = useState<File[]>([]);
-  const [fileURL, setFileURL] = useState("");
+  const [fileURL, setFileURL] = useState(mediaURL);
   const onDrop = useCallback(
     (acceptedFiles: FileWithPath[]) => {
       setFile(acceptedFiles);
@@ -50,7 +50,13 @@ const FileUploader = ({ fieldChange, mediaURL }: FileUploaderProps) => {
             Drag photo here
           </h3>
           <p className='text-light-4 small-regular mb-6'>SVG,PNG,JPG</p>
-          <Button className='shad-button_primary whitespace-nowrap'> Select File</Button>
+          <Button
+            className='shad-button_primary whitespace-nowrap'
+            type='button'
+          >
+            {" "}
+            Select File
+          </Button>
         </div>
       )}
     </div>
