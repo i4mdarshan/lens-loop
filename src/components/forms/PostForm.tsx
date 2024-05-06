@@ -54,7 +54,7 @@ const PostForm = ({ action, post }: PostFormProps) => {
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof CreatePostValidation>) {
     if (post && action === "update") {
-      console.log(values);
+      // console.log(values);
 
       const updatedPost = await updatePost({
         ...values,

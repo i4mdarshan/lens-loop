@@ -39,7 +39,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const [user, setUser] = useState<IUser>(INITIAL_USER);
   const [isLoading, setIsLoading] = useState(false);
-  const [isAuthenticated, setIsAuntheticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const navigate = useNavigate();
 
@@ -57,14 +57,14 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           bio: currentAccount.bio,
         });
 
-        setIsAuntheticated(true);
+        setIsAuthenticated(true);
 
         return true;
       }
 
       return false;
     } catch (error) {
-      console.log("Inside checkAuthUser catch block:");
+      // console.log("Inside checkAuthUser catch block:");
       console.log(error);
       return false;
     } finally {
@@ -77,7 +77,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setUser,
     isLoading,
     isAuthenticated,
-    setIsAuntheticated,
+    setIsAuthenticated,
     checkAuthUser,
   };
 

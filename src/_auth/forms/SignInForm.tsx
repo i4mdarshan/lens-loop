@@ -20,7 +20,7 @@ import { useUserContext } from "@/context/AuthContext";
 
 const SignInForm = () => {
   const { toast } = useToast();
-  const { user, checkAuthUser, isLoading: isUserLoading } = useUserContext();
+  const { checkAuthUser } = useUserContext();
   const navigate = useNavigate();
   const { mutateAsync: signInAccount, isPending: isSigningIn } =
     useSignInAccount();
