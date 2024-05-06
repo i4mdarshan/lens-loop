@@ -7,6 +7,7 @@ import AuthLayout from "./_auth/AuthLayout";
 import RootLayout from "./_root/RootLayout";
 import { CreatePost, EditPost, Home, PostDetails } from "./_root/pages";
 import { Toaster } from "@/components/ui/toaster";
+import Explore from "./_root/pages/Explore";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         {/* private routes */}
         <Route element={<RootLayout />}>
           <Route index element={<Home />} />
+          <Route path='/explore' element={<Explore />} />
           <Route path='/create-post' element={<CreatePost />} />
           <Route path='/edit-post/:id' element={<EditPost />} />
           <Route path='/post/:id' element={<PostDetails />} />
