@@ -49,7 +49,7 @@ const PostCard = ({ post }: PostCardProps) => {
         </Link>
       </div>
 
-      <Link to={`/posts/${post.$id}`}>
+      <Link to={`/post/${post.$id}`}>
         <img
           src={post.imageURL || "/assets/icons/profile-placeholder.svg"}
           alt='post image'
