@@ -56,3 +56,9 @@ export const multiFormatDateString = (timestamp: string = ""): string => {
 export const checkIsLiked = (likeList: string[], userId: string) => {
   return likeList.includes(userId);
 };
+
+export const toPascalCase = (str: string): string => {
+  return str
+    .replace(/[-_](.)/g, (_, letter) => letter.toUpperCase())
+    .replace(/^\w/, (c) => c.toUpperCase());
+};
