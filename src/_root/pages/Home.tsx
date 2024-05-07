@@ -16,7 +16,7 @@ const Home = () => {
           ) : (
             <ul className='flex flex-col flex-1 gap-9 w-full'>
               {posts?.documents.map((post: Models.Document) => (
-                <PostCard key={post.caption} post={post}></PostCard>
+                <PostCard key={post.caption + (Math.random()*10000)} post={post}></PostCard>
               ))}
             </ul>
           )}

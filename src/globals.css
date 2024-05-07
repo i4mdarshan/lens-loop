@@ -136,7 +136,7 @@
 
   /* Home */
   .home-container {
-    @apply flex flex-col flex-1 items-center gap-10 overflow-scroll py-10 px-5 md:px-8 lg:p-14 custom-scrollbar;
+    @apply flex flex-col flex-1 items-center gap-10 overflow-scroll py-10 px-3 md:px-8 lg:p-14 custom-scrollbar;
   }
 
   .home-posts {
@@ -188,7 +188,7 @@
 
   /* Bottom bar */
   .bottom-bar {
-    @apply z-50 flex-between w-full sticky bottom-0 rounded-t-[20px] bg-dark-2 px-5 py-4 md:hidden;
+    @apply z-50 flex-between w-full sticky bottom-0 rounded-t-[20px] bg-dark-2 px-5 py-4 mt-1 md:hidden;
   }
 
   /* File uploader */
