@@ -174,7 +174,7 @@ export async function getFilePreview(fileId: string) {
       2000,
       2000,
       undefined,
-      100
+      70
     );
 
     return fileURL;
